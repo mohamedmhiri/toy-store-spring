@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head> 
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Form</h1>
+        <form action="#" th:action="@{/update}" method="post">
+		<p>
+			<label for="email">User email</label> :
+			<select name="email" id="email">
+				<option th:each="c:*{customers}" th:text="${c.email}"></option>
+			</select>
+			<label for="nom">Nouveau nom</label> : 
+			<input type="text" name="nom" id="nom" placeholder="your first name"/><br/>
+			<label for="prenom">Nouveau prenom</label> : 
+			<input type="text" name="prenom" id="prenom" placeholder="your second name"/><br/>
+			<label for="tel">Nouveau numero de telephone</label> : 
+			<input type="tel" name="tel" id="tel" /><br/>
+			<label for="adresse">Nouveau adresse</label> : 
+			<input type="text" name="adresse" id="adresse" /><br/>
+			<label for="username">Nouveau login</label> : 
+			<input type="text" name="username" id="username"/><br/>
+			<input type="submit" value="go"/>
+		</p>		
+	</form>
+</body>
+</html>

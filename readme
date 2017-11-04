@@ -1,0 +1,14 @@
+liens utils:
+
+
+http://blog.netgloo.com/2014/10/27/using-mysql-in-spring-boot-via-spring-data-jpa-and-hibernate/
+https://github.com/netgloo/spring-boot-samples/tree/master/spring-boot-mysql-springdatajpa-hibernate
+https://spring.io/guides/gs/accessing-data-jpa/
+https://spring.io/guides/gs/handling-form-submission/
+
+veuillez télécharger gradle 2.10  (https://services.gradle.org/distributions/gradle-2.10-all.zip) le décompresser et le mettre sous le répértoire site
+
+enfin :
+gradle-2.10/bin/gradle build;gradle-2.10/bin/gradle wrapper ; ./gradlew build
+java -jar build/libs/gs-handling-form-submission-0.1.0.jar
+

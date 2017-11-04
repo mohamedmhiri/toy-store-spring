@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+ <head>
+        <title>Supprimer Commande</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>Supprimer Commande</div>
+        <form action="#" th:action="@{/deletec}" method="post">
+		
+		<label for="id">Numero Commande</label> :<br/>	
+		<select name="id" id="id">
+			<option th:each="c:*{commands}" th:text="${c.id}"></option>
+		</select>
+                <input type="submit" value="go"/>    
+        </form>
+    </body>
+</html>

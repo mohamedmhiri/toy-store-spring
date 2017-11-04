@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+    	<link rel="stylesheet" type="text/css" href="../css/popup.css" th:href="@{../css/popup.css}"/>
+    	<script type="text/javascript" th:src="@{../js/popup.js}"></script>
+    	<script type="text/javascript" th:src="@{../js/jquery.js}"></script>
+
+	</head>
+    <body>
+		<span class="button">Sign In</span>
+		<div class="modal-bg">
+		<div id="modal">
+			<span>Sign In<a href="#close" id="close">&#215;</a></span>
+			<form>
+				<input id="username" name="username" type="textbox" placeholder="Username" />
+				<input id="password" name="password" type="password" placeholder="Password" />
+				<a id="forgot-link" href="#">Forgot password?</a>
+				<button name="submit" id="submit" type="submit">Sign in</button>
+			</form>
+		</div>
+		</div>
+		<script>
+			$('.button').click(function(){
+		  $('#modal').css('display','block');
+		  $('.modal-bg').fadeIn();
+	});
+
+		$('#close').click(function(){
+			  $('.modal-bg').fadeOut();		
+			  $('#modal').fadeOut();
+		  return false;
+		});
+		</script>
+
+	</body>
+</html>
+

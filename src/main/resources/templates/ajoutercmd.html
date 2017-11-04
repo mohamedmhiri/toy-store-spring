@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Ajouter Commande</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>
+            <h1>Ajouter Commande</h1>
+        </div>
+        <form action="#" th:action="@{/createc}" method="post">
+	        <label for="name">Nom du jouet</label> :<br/>
+			<select name="name" id="name">
+				<option th:each="t:*{toys}" th:text="${t.name}"></option>
+			</select>
+            <label for="email">
+                <p>User email</p>
+            </label> :<br/>
+			<select name="email" id="email">
+				<option th:each="c:*{customers}" th:text="${c.email}"></option>
+			</select>
+			<input type="submit" value="go"/>
+        </form>
+    </body>
+</html>

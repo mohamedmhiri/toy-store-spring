@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Panier</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!--<meta http-equiv="refresh" content="5;URL=panier.html"/> -->
+    </head>
+    <body>
+        <div>
+          <h1>Votre panier contient :</h1>
+        </div>
+	
+	      <table>
+          <tr>
+            <th>NAME</th>
+            <th></th>
+            <th>PRICE</th>
+            <th>Quantity</th>
+   
+          </tr>
+
+          <tr th:each="t: ${toys}" >
+            <td th:text="${t.name}"></td>
+            <td th:text="${t.price}"></td>
+            <script> var total=0</script>
+            <td><input th:text="${t.price}" th:value="${t.price}" id="p" onclick="myFunction(this)"/></td>
+            <td> <input name ="quantity" id="q" type="number" value="0" min="0" th:max="${t.quantity}"   onclick="myFunction(this)"/></td> 
+            
+  
+ 	          <td >
+              <form action="#" th:action="@{/delpanier}" method="post"  >
+	               <input type="hidden" name="name" th:value="${t.name}"/>
+	               <input type="submit" value="Enlever du panier" />
+	            </form>
+	          </td>
+     </tr>
+        </table>
+          <input name ="total" id="t" type="text" value="0" readonly="true"  onclick="myFunction(this)"/>
+          <form action="#" th:action="@{/cmd}" method="post" >
+             <input type="number" name="quantity" value="1"/>
+	           <input type="hidden" th:value="${user}" name="email"/>
+	
+	           <input type="submit" th:value="commander"/>
+          </form>
+	
+	        <p th:text="${total}" />
+          <script>
+          var total=0;
+function myFunction(champ) {
+var y = document.getElementById(champ.id);
+var x = document.getElementById("p");
+var z= document.getElementById("t");
+
+total=y.value*x.value+total;
+   z.value=total;
+}
+</script>
+    </body>
+</html> 

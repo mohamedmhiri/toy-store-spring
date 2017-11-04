@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+        <title>Supprimer Jouet</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>Supprimer Jouet</div>
+        <h1>Form</h1>
+        <form action="#" th:action="@{/deletet}" method="post">
+		
+			<label for="name">Nom du jouet</label> :<br/>
+			<select name="name" id="name">
+				<option th:each="t:*{toys}" th:text="${t.name}"></option>
+			</select>
+			<input type="submit" value="go"/>
+        </form>
+                        </body>
+</html>

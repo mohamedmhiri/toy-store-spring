@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Jouets</title>
+        <style>
+        #bloc_page
+{
+    width: 900px;
+    margin: auto;
+}
+
+ nav a
+{
+    font-family: Dayrom, serif;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+/* Header */
+
+header
+{
+    background: url('') repeat-x bottom;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#titre_principal
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#logo
+{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+#logo img
+{
+    width: 59px;
+    height: 60px;
+}
+
+header h1
+{
+    font-family: 'BallparkWeiner', serif;
+    font-size: 2.5em;
+    font-weight: normal;
+    margin: 0 0 0 10px;
+}
+
+header h2
+{
+    font-family: Dayrom, serif;
+    font-size: 1.1em;
+    margin-top: 0px;
+    font-weight: normal;
+}
+
+
+nav ul
+{
+    list-style-type: none;
+    display: flex;
+}
+
+nav li
+{
+    margin-right: 15px;
+}
+
+nav a
+{
+    font-size: 1.3em;
+    color: #181818;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+nav a:hover
+{
+    color: #760001;
+    border-bottom: 3px solid #760001;
+}
+
+/* Bannière */
+
+#banniere_image
+{
+    margin-top: 15px;
+    height: 200px;
+    border-radius: 5px;
+    background: url('1.jpg') no-repeat;
+    position: relative;
+    box-shadow: 0px 4px 4px #1c1a19;
+    margin-bottom: 25px;
+}
+
+#banniere_description
+{
+    position: absolute;
+    bottom: 0;
+    border-radius: 0px 0px 5px 5px;
+    width: 99.5%;
+    height: 33px;
+    padding-top: 15px;
+    padding-left: 4px;
+    background-color: rgba(24,24,24,0.8);
+    color: white;
+    font-size: 0.8em;
+    
+}
+
+.bouton_rouge
+{
+    height: 25px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    //background: url('1.jpg') repeat-x;
+    border: 1px solid #760001;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 3px 8px 0px 8px;
+    color: white;
+    text-decoration: none;
+}
+
+.bouton_rouge img
+{
+    border: 0;
+}
+
+input[type="range"] {
+    position: relative;
+    margin-left: 1em;
+}
+input[type="range"]:after,
+input[type="range"]:before {
+    position: absolute;
+    top: 1em;
+    color: #aaa;
+}
+input[type="range"]:before {
+    left:0em;
+    content: attr(min);
+}
+input[type="range"]:after {
+    right: 0em;
+    content: attr(max);
+}
+</style>
+    </head>
+    <body>
+        <div>
+          <div th:include="index :: copy">
+  </div>
+	         <table>
+            <tr>
+              <th>NAME</th>
+              <!-- <th></th> -->
+              <th>PRICE</th>
+              <th>IN STOCK</th>
+   <!--<th>COMMENTS</th>-->
+<!--	<form action="#" th:action="@{/create}" method="post" style="display: block;" th:object="${customer}">-->
+            </tr>
+            <tr th:each="t: ${toys}" ><!--th:class="${prodStat.odd}? 'odd'">-->
+              <td th:text="${t.name}"></td>
+              <td >
+                <form action="#" th:action="@{/panier}" method="post"  th:object="${toys}" >
+		              <input type="hidden" name="name" th:value="${t.name}"/>
+		              <input th:type="${t.quantity} &gt; 0 ? 'submit' : 'hidden'" value="Ajouter au panier" />
+	              </form>
+				        <!--<a th:href="@{panier}" th:text="${cookies &lt; 1 ? '' : cookies}">Panier</a>-->
+				<!--"${cookies <1 ? '' :cookies ==1? cookies' product':cookies' products'}"-->
+              </td>
+              <td th:text="${t.price}"></td>
+              <td th:text="${t.quantity} &gt; 0 ? 'available'  : 'not available' "></td><!-- expression ternaire-->
+              <td>
+                <img th:src="@{''+${t.image}}" style="max-width:150px;"/>
+              </td>
+    <!--<td><img src="https://sergiupopovici.files.wordpress.com/2009/05/image-liberte1.jpeg?w=450" th:src="@{https://sergiupopovici.files.wordpress.com/2009/05/image-liberte1.jpeg?w=450}"/></td>-->
+<!--   <td>src="mountain.jpg"
+     <span th:text="${#lists.size(prod.comments)}">2</span> comment/s
+      <a href="panier" 
+         th:href="@{panier}" >
+         th:unless="${#lists.isEmpty(prod.comments)}">Ajouter au panier</a>
+    </td>-->
+            </tr>
+           </table>
+	      </div>
+	
+    </body>
+</html>

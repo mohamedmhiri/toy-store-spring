@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title> Espace Administrateur  </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="../css/popup.css" th:href="@{../css/popup.css}"/>
+    </head>
+    <body>
+        <div>
+            <h1>Espace Administrateur </h1></div>
+            <h2>Client</h2>
+        <ul>
+            <li>
+                  <!--<input type="button"  value="Ajouter" onclick="ouvrec(this)"/>-->
+                    
+                    <input type="button" value="Ajouter Client" onclick="ouvrec(this)"/>
+                    
+            </li>
+            <li>
+                
+                    <input type="button"  value="Supprimer Client" onclick="ouvrec(this)"/>              
+
+            </li>
+            <li>
+        
+                    <input type="button"  value="Modifier Client" onclick="ouvrec(this)"/>              
+
+            </li>
+            <li>
+                
+                    <input type="button"  value="Afficher Client" onclick="ouvrec(this)"/>              
+
+            </li>
+        </ul>
+            <h2>Jouet</h2>
+        <ul>
+            <li>
+                
+                 
+                <input type="button"  value="Ajouter Jouet" onclick="ouvrep(this)"/>
+            </li>
+            <li>
+                
+                <input type="button"  value="Supprimer Jouet" onclick="ouvrep(this)"/>              
+
+            </li>
+            <li>
+               
+               <input type="button"  value="Modifier Jouet" onclick="ouvrep(this)"/>              
+
+            </li>
+            <li>
+		       <input type="hidden" th:value="cookies" />
+               
+               <input type="button"  value="Afficher Jouet" onclick="ouvrep(this)"/>              
+
+            </li>
+        </ul>
+            <h2>Commande</h2>
+        <ul>
+            <li>
+                
+                
+                <input type="button"  value="Ajouter Commande" onclick="ouvre(this)"/>
+            </li>
+            <li>
+                
+                <input type="button"  value="Supprimer Commande" onclick="ouvre(this)"/>              
+
+            </li>
+            
+            <li>
+                
+                <input type="button"  value="Afficher Commande" onclick="ouvre(this)"/>              
+
+            </li>
+        </ul>
+        <script>
+            function ouvrec(champ){             
+                if(champ.value === "Ajouter Client")
+                    window.open('form.html','fenetre','width=650,height=500');
+                if(champ.value === "Supprimer Client")
+                    window.open('suppclient.html','fenetre','width=650,height=500');
+                if(champ.value === "Modifier Client")
+                    window.open('u_form.html','fenetre','width=650,height=500');
+                if(champ.value === "Afficher Client")
+                    window.open('affichclient.html','fenetre','width=650,height=500');
+            }
+
+            function ouvrep(champ){
+                if(champ.value === "Ajouter Jouet")
+                    window.open('ajouterj.html','fenetre','width=650,height=500');
+                if(champ.value === "Supprimer Jouet")
+                    window.open('supprimerj.html','fenetre','width=650,height=500');
+                if(champ.value === "Modifier Jouet")
+                    window.open('modifierj.html','fenetre','width=650,height=500');
+                if(champ.value === "Afficher Jouet")
+                    window.open('afficherj.html','fenetre','width=650,height=500');
+            }
+            function ouvre(champ){
+                if(champ.value === "Ajouter Commande")
+                    window.open('ajoutercmd.html','fenetre','width=650,height=500');
+                if(champ.value === "Supprimer Commande")
+                    window.open('supprimercmd.html','fenetre','width=650,height=500');
+                if(champ.value === "Afficher Commande")
+                    window.open('affichcmd.html','fenetre','width=650,height=500');
+            }
+            /*$('.button').click(function(){
+                $('#modal').css('display','block');
+                $('.modal-bg').fadeIn();
+            });
+
+            $('#close').click(function(){
+                $('.modal-bg').fadeOut();     
+                $('#modal').fadeOut();
+                return false;
+            });*/
+        </script>
+    </body>
+</html>

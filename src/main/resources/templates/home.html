@@ -1,0 +1,13 @@
+<!--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+        <h1>Welcome!</h1>
+
+        <p ><c:out value="Click"/> <a th:href="@{/login}">here</a> <c:out value="to connect."/></p >
+    </body>
+</html>

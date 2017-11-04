@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head> 
+    <title>Supprimer Client </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Formulaire Suppression Client</h1>
+        <form action="#" th:action="@{/delete}" method="post">
+		<p>
+			<label for="email">Votre email</label> :<br/>
+			<select name="email" id="email">
+				<option th:each="c:*{customers}" th:text="${c.email}"></option>
+			</select>
+			
+			<input type="submit" value="go"/>
+		</p>		
+	</form>
+</body>
+</html>

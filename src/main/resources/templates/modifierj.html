@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        
+        <div> Modifier Jouet </div>
+        <h1>Form</h1>
+        <form action="#" th:action="@{/updatet}" method="post" th:object="${toy}">
+		<p>
+			<label for="name">Nom du jouet</label> :<br/>
+			<select name="name" id="name">
+				<option th:each="t:${toys}" th:text="${t.name}"></option>
+			</select>
+			<input type="text" name="category" id="category" th:field="*{category}" placeholder="categorie"/><br/> 
+			<p th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></p>
+			<input type="text" name="price" id="price" th:field="*{price}" placeholder="prix"/><br/>
+			<p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+			
+			<input type="text" name="quantity" th:field="*{quantity}" id="quantity" /><br/>
+			<p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
+			<label for="image">Image</label> : 
+                        <input type="file" name="image" id="image" />
+			
+			<input type="submit" value="go"/>
+		</p>		
+	</form>
+    </body>
+</html>

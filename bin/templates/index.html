@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+        <title th:text="#{index.title}">Home</title>
+        <!--<link rel="stylesheet" type="text/css" href="../css/popup.css" th:href="@{../css/popup.css}"/>-->
+        <style>
+        #bloc_page
+{
+    width: 900px;
+    margin: auto;
+}
+
+ nav a
+{
+    font-family: Dayrom, serif;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+/* Header */
+
+header
+{
+    background: url('') repeat-x bottom;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#titre_principal
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#logo
+{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+#logo img
+{
+    width: 59px;
+    height: 60px;
+}
+
+header h1
+{
+    font-family: 'BallparkWeiner', serif;
+    font-size: 2.5em;
+    font-weight: normal;
+    margin: 0 0 0 10px;
+}
+
+header h2
+{
+    font-family: Dayrom, serif;
+    font-size: 1.1em;
+    margin-top: 0px;
+    font-weight: normal;
+}
+
+
+nav ul
+{
+    list-style-type: none;
+    display: flex;
+}
+
+nav li
+{
+    margin-right: 15px;
+}
+
+nav a
+{
+    font-size: 1.3em;
+    color: #181818;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+nav a:hover
+{
+    color: #760001;
+    border-bottom: 3px solid #760001;
+}
+
+/* Bannière */
+
+#banniere_image
+{
+    margin-top: 15px;
+    height: 40px;
+    border-radius: 5px;
+    background: url('1.jpg') no-repeat;
+    position: relative;
+    box-shadow: 0px 4px 4px #1c1a19;
+    margin-bottom: 25px;
+}
+
+#banniere_description
+{
+    position: absolute;
+    bottom: 0;
+    border-radius: 0px 0px 5px 5px;
+    width: 99.5%;
+    height: 33px;
+    padding-top: 15px;
+    padding-left: 4px;
+    background-color: rgba(24,24,24,0.8);
+    color: white;
+    font-size: 0.8em;
+    
+}
+
+.bouton_rouge
+{
+    height: 25px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    //background: url('1.jpg') repeat-x;
+    border: 1px solid #760001;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 3px 8px 0px 8px;
+    color: white;
+    text-decoration: none;
+}
+
+.bouton_rouge img
+{
+    border: 0;
+}
+
+input[type="range"] {
+    position: relative;
+    margin-left: 1em;
+}
+input[type="range"]:after,
+input[type="range"]:before {
+    position: absolute;
+    top: 1em;
+    color: #aaa;
+}
+input[type="range"]:before {
+    left:0em;
+    content: attr(min);
+}
+input[type="range"]:after {
+    right: 0em;
+    content: attr(max);
+}
+</style>
+    </head>
+    <body>
+    
+      
+   
+       <div id="bloc_page">
+        <div th:fragment="copy">
+            <header>
+                <div id="titre_principal">
+                    <div id="logo">
+                        <img src="/images/logo.jpg" alt="Logo de Site" />
+                        <h1 th:text="#{index.h1}"></h1>    
+                    </div>
+                </div>
+                
+                <nav>
+                    <ul> 
+                        <li><input type="button" value="home" onclick="ouvre(this)" th:href="@{/}"/></li>
+                        <!--<li><input type="button"  value="panier"   onclick="ouvre(this)"/></li>-->
+                        <li><input type="button"  value="login"   onclick="ouvre(this)"/></li>
+			            <li><input type="button" value="logout"   onclick="ouvre(this)"/></li>
+                        <li><input type="button"  value="Sign Up"  onclick="ouvre(this)"/></li>
+                        <!--th:href="@{index}"
+th:href="@{login}"
+th:href="@{logout}"
+th:href="@{form}"-->
+			<!--<li th:text="${session.customer.nom}"/>-->
+
+                       <!--th:if="*{customer.email}==''"--> 
+                    </ul>
+                </nav>
+            </header>
+            
+            <div id="banniere_image">
+                <div id="banniere_description" >
+                    <p th:text="#{index.Welcome}">Welcome to our website</p>
+                    
+            
+                </div>
+            </div>
+            <div>       
+            <a><p th:text="#{index.research}"></p></a>
+	<!--onclick="Montre_menu();"-->
+        </div>
+		<input type="hidden" th:value="cookies" />
+        
+           <div id="ok" style="display:block;">
+<!--<form action="#" th:action="@{/cmd}" method="post" >
+-->
+<!-- "${session.customer.name==''}? @{/login} : @{/createc}" -->
+<!--	<input type="hidden" th:value="${user}" name="email"/>
+	
+	<input type="submit" th:value="commander"/>
+</form>-->
+	<form action="#" th:action="@{afficherj}" method="GET"  > 
+		<!--<input type="hidden" th:value="${name}" name="name"/>-->
+		<input type="submit" value="Jouet Divers" />
+	</form>
+	<form action="#" th:action="@{affichergar}" method="GET"  > 
+		
+		<input type="submit" value="Jouet Pour Garçon" />
+	</form>
+	<form action="#" th:action="@{afficherfille}" method="GET"  > 
+		
+		<input type="submit" value="Jouet Pour Fille" />
+	</form>
+	<form action="#" th:action="@{afficherbebe}" method="GET"  > 
+		
+		<input type="submit" value="Jouet pour bebe" />
+	</form>
+        </div>
+           <div>
+               
+	     <form action="#" th:action="@{search}" method="post" >	
+           
+                   <p th:text="#{index.search.key}"></p> 
+	<ul>
+	   <li>
+		<p th:text="#{index.toy.name}"> Toy Name</p>
+		<input name="name" id="name" type="text" placeholder="Inserer un nom de jouet" />
+	  </li>
+	</ul>	
+        <ul>
+            <li>
+            <p>Prix</p>
+            <input name ="price" id="price" type="range" value="15" max="50" min="0" step="5" onclick="valeur(this);" />
+            <label style="font-size: 20px;" id="p">
+             
+            </label>
+            </li>
+        </ul>
+        <ul>
+            <li>
+            <p th:text="#{index.category}" > Category </p>
+                <label><input th:text="#{index.toy.boy}" name="category" type="radio" value="boy" /></label>
+	            <label><input th:text="#{index.toy.girl}" name="category" type="radio" value="fille" /></label>
+                <label><input th:text="#{index.toy.baby}" name="category" type="radio" value="bebe" checked="bebe"/></label>
+            </li>
+        </ul>
+         <input type="submit" value="Rechercher" />
+   
+        </form>
+       
+           </div>
+            </div>
+           <aside> 
+<h1>À propos du site</h1>
+<p>Notre site est conçu en 2016</p>
+ </aside> 
+<article> 
+    <h1>C'est un site de vente de jouet en ligne</h1> 
+    <p>
+        Ce site est crée pour tous le monde !
+        
+     </p> 
+</article> 
+
+<footer> 
+        <p th:text="#{index.footer.p}">Copyright GL - All Rights Reserved</p> 
+        <!--<a href="#" th:text="#{index.footer.a}"> Contact Us !</a>-->
+        <a th:href="@{/?lang=en}" class="btn">English</a>
+        <a th:href="@{/?lang=fr}" class="btn">French</a>
+        <a th:href="@{/chart}">Statistics</a>
+       
+ </footer> 
+ </div>
+        <script>
+             function Montre_menu() {
+        var menu = document.getElementById('ok'); // On vérifie l'existence du menu
+        if(menu) { // Si il existe...
+                menu.style.display = (menu.style.display) ? '' : 'none'; // Si il est fermé on l'ouvre, sinon, on le ferme
+        }
+    }
+    function valeur(champ){
+        
+   var test=document.getElementById("p");
+   test.textContent=" Le prix que vous avez saisi est "+champ.value;
+
+    }
+        
+        function ouvre(champ){
+                if(champ.value === "panier")
+                    window.open('panier.html','fenetre','width=650,height=500');
+                if(champ.value === "login")
+                    window.open('login.html','fenetre','width=650,height=500');
+                if(champ.value === "logout")
+                    window.open('logout.html','fenetre','width=650,height=500');
+                if(champ.value === "Sign Up")
+                    window.open('form.html','fenetre','width=650,height=500');
+            }
+        </script>
+    </body>
+</html>

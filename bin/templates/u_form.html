@@ -1,0 +1,58 @@
+ <!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+ <head> 
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ </head>
+ <body>
+	<h1>Form</h1>
+   <!--     <form action="#" th:action="@{/update}" method="post">
+		<p>
+			<label for="email"></label> :<br/>
+			<select name="email" id="email">
+				<option th:each="c:*{customers}" th:text="${c.email}"></option>
+			</select>
+			<label for="nom"></label> : 
+			<input type="text" name="nom" id="nom" placeholder="your first name"/><br/>
+			<label for="prenom"></label> : 
+			<input type="text" name="prenom" id="prenom" placeholder="your second name"/><br/>
+			<label for="tel"></label> : 
+			<input type="tel" name="tel" id="tel" /><br/>
+			<label for="adresse"></label> : 
+			<input type="text" name="adresse" id="adresse" /><br/>
+			<input type="submit" value="go"/>
+		</p>		
+	</form>-->
+    <div>
+	<form action="#" th:action="@{/update}" th:object="${customer}" method="post" >
+              <div class="form-group">          
+			<select name="email" id="email">
+				<option th:each="c:${customers}" th:text="${c.email}"></option>
+			</select>
+	      </div>
+              <div class="form-group"> 	
+			<input type="text" name="nom" th:field="*{nom}" placeholder="your first name"/>
+			<p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></p>
+			
+	      </div>
+	      <div class="form-group"> 	
+			<input type="text" name="prenom" th:field="*{prenom}"  placeholder="your second name"/>
+			<p th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></p>
+	      </div>
+              <div class="form-group">
+			<input type="text" th:field="*{tel}" name="tel"  />
+			<p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></p>
+	      </div>
+              <div class="form-group">	
+			<input type="text" name="adresse"  />
+	      </div>
+              <div class="form-group">	
+			<input type="password" th:field="*{password}" name="password" />
+			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+	      </div>
+	      	        <button type="submit">Submit</button>
+	</form>
+	</div>
+ </body>
+</html>

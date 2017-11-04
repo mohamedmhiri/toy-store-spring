@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Bienvenue </title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+        body{
+    background-color: aqua; 
+    }
+    
+    h1{
+     font-size: 40px; text-align: left; background-color: #000000;color:aqua;border:3px aqua inset
+    }
+    p{
+        font-size: 20px;
+    }
+    input{
+       color:aqua; background-color:black; 
+    }
+        </style>
+    </head>
+    
+    <body >
+        <div style="font-size: 88px; text-align: center; background-color: #000000;color:aqua;border:3px aqua inset">
+          <h1>BIENVENUE DANS NOTRE SITE</h1> 
+        </div>
+        <div> 
+          <p> Recherche Rapide </p>
+          <a href="afficherj.html" > 
+            <input type="button" value="Jouet Divers" />
+          </a>
+          <a href="affichgar" > 
+            <input type="button" value="Jouet Pour Garçon" />
+          </a>
+          <a href="affichfille" > 
+            <input type="button" value="Jouet Pour Fille" />
+          </a>
+        </div>
+          <p>Saisir une mode de recherche</p>
+         
+        <select name="Rechercher Par" id="Recherche">
+           
+          <option value="Prix">Prix</option>
+	        <option value="Catégorie">Categorie</option>
+	        <option value="Nom">Nom</option>
+	
+	      </select>
+       
+        <input type="submit" value="Rechercher" onclick="ouvre()"/>
+        <nav> 
+          <ul> 
+            <li>
+              <a href="index.html">Accueil</a>
+            <ul>
+            <li> 
+              <a href="forum.html">1</a>
+            </li>
+            <li>
+              <a href="contact.html">2</a>
+            </li> 
+	          <li>
+              <a href="forum.html">Forum</a>
+            </li>
+ 	          <li>
+              <a href="contact.html">Contact</a>
+            </li> 
+          </ul>
+        </nav> 
+
+        <aside> 
+          <h1>À propos du site</h1>
+            <p>Notre site est conçu en 2016</p>
+        </aside> 
+        <article> 
+          <h1>C'est un site de vente de jouet en ligne</h1> 
+            <p>Ce site est crée pour tous le monde !</p> 
+        </article> 
+
+        <footer> 
+          <p>Copyright GL - Tous droits réservés<br/> 
+            <a href="#">Nous contacter !</a>
+          </p>
+        </footer> 
+        <script>
+         function ouvre(){
+          if(champ.value==="Prix")
+            window.open('redirect.jsp','fenetre','width=650,height=500');
+
+          else
+            if(champ.value==="Nom")
+              window.open('form.jsp','fenetre','width=650,height=500');
+            else
+              window.open('form.jsp','fenetre','width=650,height=500');
+         }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Add Customer</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" th:href="@{../css/style.css}"/>
+    <script type="text/javascript" th:src="@{../js/jquery.js}"></script>
+   <script type="text/javascript">
+    $( document ).ready(function() {
+        
+        // let's Hide Items
+        $( ".cc-contactpop form").hide();
+        $( ".cc-contactpop i").hide(); 
+        $( ".cc-contactpop p").hide();
+        
+        // Show on elements ".slideDown"
+        $( ".cc-contactpop" ).click(function() {
+                $( ".cc-contactpop form").slideDown(500)
+                $( ".cc-contactpop p").slideDown(500)
+                $( ".cc-contactpop i").slideDown(500)
+        });
+        
+        // Close Hidden Part
+        $( ".cc-contactpop i" ).click(function() {
+                $(this).slideUp(500)
+                        $( ".cc-contactpop p").slideUp(500)
+                        $( ".cc-contactpop form").slideUp(500)
+                return false
+        });
+     
+    });
+    </script>
+</head>
+<body>
+   <div class="cc-contactpop fixed">
+     <h1>Form</h1>
+     <div class="renseignement">
+	<i class="fa fa-times" style="display: block;"></i>
+	<p style="display: block;"> Add a customer</p>
+     </div><!--style="display: block;"-->
+	<form action="#" th:action="@{/create}" method="post"  th:object="${customer}">
+              <div class="form-group">          
+			<input type="email" name="email"  placeholder="your@email" />
+	      </div>
+              <div class="form-group"> 	
+			<input type="text" name="nom" th:field="*{nom}" placeholder="your first name"/>
+			<p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></p>
+			
+	      </div>
+	      <div class="form-group"> 	
+			<input type="text" name="prenom" th:field="*{prenom}"  placeholder="your second name"/>
+			<p th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></p>
+	      </div>
+              <div class="form-group">
+			<input type="text" th:field="*{tel}" name="tel" placeholder="your tel number" />
+			<p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></p>
+	      </div>
+              <div class="form-group">	
+			<input type="text" name="adresse"  placeholder="your adress"/>
+	      </div>
+              <div class="form-group">	
+			<input type="password" th:field="*{password}" name="password" placeholder="your password"/>
+			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+	      </div>
+	   <button type="submit">Submit</button>
+  </form>
+	</div>
+</body>
+</html>
